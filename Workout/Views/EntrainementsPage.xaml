@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.EntrainementsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="15" BackgroundColor="White" x:Name="main">
+            <ListView SelectedItem="{Binding SelectedEntrainement, Mode=TwoWay}" ItemsSource="{Binding Entrainements}" ItemSelected="OnEntrainementSelected" HasUnevenRows="true" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="White" Margin= "5" HasShadow="true" CornerRadius="3">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Nom}" FontSize="Large" HorizontalTextAlignment="Center" />
+                                    </StackLayout>
+                                    <Label Text="Uper Body 1" />
+                                    <Label Text="Lower Body 1" />
+                                    <Label Text="Uper Body 2" />
+                                    <Label Text="Lower Body 2" />
+                                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                        <Label Text="Difficulté" FontSize="Small" />
+                                        <Label Text="**" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

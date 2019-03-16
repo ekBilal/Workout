@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.SeriePage" Title="Repos">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame x:Name="info" BackgroundColor="White" Margin="5" HasShadow="true" CornerRadius="3" IsVisible="true">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Développé couché barre" FontSize="Large" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                    <Label Text="{Binding Serie.NbReps, StringFormat='{0} répétitions'}" />
+                    <Label Text="{Binding Serie.Repos, StringFormat='{0} secondes de temps de repos entre les series'}" />
+                    <Label Text="{Binding Cible}" />
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Text="Difficulté" FontSize="Small" />
+                        
+                        <Label Text="***" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="feedback" BackgroundColor="White" Margin="5" HasShadow="true" CornerRadius="3" IsVisible="false">
+                <StackLayout>
+                    <Label Text="Nombre de répétition validé" />
+                    <Entry Keyboard="Numeric"/>
+                    <Label Text="Charge" />
+                    <Entry Keyboard="Numeric"/>
+                    <Label Text="Difficulté"/>
+                    <Slider Maximum="5"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="timer" BackgroundColor="#333" Margin="5" HasShadow="true" CornerRadius="3" VerticalOptions="CenterAndExpand" IsVisible="false">
+                <Label Text="{Binding Serie.Repos}" TextColor="White" HorizontalTextAlignment="Center" FontSize="Large" />
+            </Frame>
+            <Button  x:Name="button" IsVisible="true" Text="repos" BackgroundColor="#777" Margin="10" TextColor="White" VerticalOptions="EndAndExpand" Clicked="Handle_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

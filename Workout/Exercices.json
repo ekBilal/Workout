@@ -1,0 +1,311 @@
+﻿[
+  {
+    "Id": 1,
+    "Nom": "Développé couché barre",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 6,
+        "Nom": "triceps",
+        "Groupe": 2
+      },
+      {
+        "IdMuscle": 4,
+        "Nom": "épaules",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Nom": "Développé couché haltères",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 2,
+        "Nom": "pectoraux",
+        "Groupe": 2
+      },
+      {
+        "IdMuscle": 6,
+        "Nom": "triceps",
+        "Groupe": 2
+      },
+      {
+        "IdMuscle": 4,
+        "Nom": "épaules",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Nom": "Tractions barre fixe ",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0,1 ],
+    "Cibles": [
+      {
+        "IdMuscle": 3,
+        "Nom": "dos",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Nom": "Tirage poulie haute prise large",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 3,
+        "Nom": "dos",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Nom": "Squat",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 3,
+        "Nom": "dos",
+        "Groupe": 2
+      },
+      {
+        "IdMuscle": 9,
+        "Nom": "fessier",
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 8,
+        "Nom": "cuisses",
+        "Groupe": 1
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "Nom": "Presse incliné",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+
+
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 9,
+        "Nom": "fessier",
+
+
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 8,
+        "Nom": "cuisses",
+
+
+        "Groupe": 1
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "Nom": "Lying leg curl ",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 8,
+        "Nom": "cuisses",
+
+
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+
+
+        "Groupe": 1
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Nom": "Soulevée terre jambes tendues haltères",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 9,
+        "Nom": "fessier",
+
+
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 8,
+        "Nom": "cuisses",
+
+
+        "Groupe": 1
+      },
+      {
+        "IdMuscle": 3,
+        "Nom": "dos",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "Nom": "Développé militaire menton",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 4,
+        "Nom": "épaules",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "Nom": "Développé haltères",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 4,
+        "Nom": "épaules",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "Nom": "Curl à la barre",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 5,
+        "Nom": "biceps",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 12,
+    "Nom": "Curl haltères",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 5,
+        "Nom": "biceps",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 13,
+    "Nom": "Barre au front ",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 6,
+        "Nom": "triceps",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 14,
+    "Nom": "Extensions poulie pronation",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 6,
+        "Nom": "triceps",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 15,
+    "Nom": "Elévations pointes debout (mollets)",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+
+
+        "Groupe": 1
+      }
+    ]
+  },
+  {
+    "Id": 16,
+    "Nom": "Crunchs à la poulie ",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 1,
+        "Nom": "abdominaux",
+        "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 17,
+    "Nom": "Crunchs poids de corps",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0, 1 ],
+    "Cibles": [
+      {
+        "IdMuscle": 1,
+        "Nom": "abdominaux",
+        "Groupe": 2
+      }
+    ]
+  }
+]

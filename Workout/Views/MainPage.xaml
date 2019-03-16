@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:views="clr-namespace:Workout.Views" 
+             x:Class="Workout.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Ready To Be Better ?" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Start"
+                   Margin="20"/>
+            
+            
+            <StackLayout Margin="10">
+                <Picker Title="type d'entrainement"
+                        SelectedItem="{Binding SelectedType, Mode=TwoWay}"
+                        ItemsSource="{Binding Type}"
+                        VerticalOptions="Fill"/>
+                
+                <Picker Title="groupe musculaire"
+                        SelectedItem="{Binding SelectedGroupe, Mode=TwoWay}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>complet</x:String>
+                                <x:String>bas du corps</x:String>
+                                <x:String>haut du corps</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                </Picker>     
+                
+                <Picker Title="but"
+                        SelectedItem="{Binding SelectedGoal, Mode=TwoWay}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>endurance</x:String>
+                                <x:String>force</x:String>
+                                <x:String>masse</x:String>
+                                <x:String>tonicité</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                </Picker>          
+                
+            </StackLayout>
+
+            <Button Text="GO" TextColor="White" 
+                    VerticalOptions="EndAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="Gray" FontAttributes="Bold" 
+                    FontSize="90"
+                    Margin="30"
+                    HeightRequest="200" WidthRequest="200"
+                    BorderColor="Silver" BorderWidth="10" 
+                    BorderRadius="100" Command="{Binding StartCommand}"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

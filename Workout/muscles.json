@@ -1,0 +1,52 @@
+﻿[
+  {
+    "IdMuscle": 1,
+    "Nom": "abdominaux",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 2,
+    "Nom": "pectoraux",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 3,
+    "Nom": "dos",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 4,
+    "Nom": "épaules",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 5,
+    "Nom": "biceps",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 6,
+    "Nom": "triceps",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 7,
+    "Nom": "avant-bras",
+    "Groupe": 2
+  },
+  {
+    "IdMuscle": 8,
+    "Nom": "cuisses",
+    "Groupe": 1
+  },
+  {
+    "IdMuscle": 9,
+    "Nom": "fessier",
+    "Groupe": 1
+  },
+  {
+    "IdMuscle": 10,
+    "Nom": "mollets",
+    "Groupe": 1
+  }
+]
