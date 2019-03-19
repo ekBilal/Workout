@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.SeriePage" Title="Repos">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.SeriePage" Title="Exercice">
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="info" BackgroundColor="White" Margin="5" HasShadow="true" CornerRadius="3" IsVisible="true">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Développé couché barre" FontSize="Large" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Serie.Exercice.Nom}" FontSize="Large" HorizontalTextAlignment="Center" />
                     </StackLayout>
                     <Label Text="{Binding Serie.NbReps, StringFormat='{0} répétitions'}" />
                     <Label Text="{Binding Serie.Repos, StringFormat='{0} secondes de temps de repos entre les series'}" />

@@ -31,7 +31,13 @@ namespace Workout.ViewModels
             SelectedExercice = null;
             var series = Seance.Series.Where(e => e.Exercice == exercice);
             var ls = series.ToList();
-            await _pageService.PushAsync(new SeriePage(new SeriesViewModel(ls)));
+            await _pageService.PushAsync(new SeriePage(new SeriesViewModel(ls, _pageService)));
+            Exercices.Remove(exercice);
+        }
+
+        public async Task Fin()
+        {
+            _pageService.ChangeMainPage(new MainPage());
         }
     }
 }

@@ -21,6 +21,11 @@ namespace Workout.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(page);
         }
 
+        public async Task PopAsync()
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
         public async Task PushModalAsync(Page page)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(page);
@@ -34,6 +39,11 @@ namespace Workout.ViewModels
         public void ChangeMainPage(Page page)
         {
             Application.Current.MainPage = new NavigationPage(page);
+        }
+
+        public async Task PopToRootAsync()
+        {
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
         }
     }
 }

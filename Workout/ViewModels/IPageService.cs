@@ -12,5 +12,7 @@ namespace Workout.ViewModels
         Task PushAsync(Page page);
         Task PushModalAsync(Page Page);
         Task PopModalAsync();
+        Task PopAsync();
+        Task PopToRootAsync();
     }
 }

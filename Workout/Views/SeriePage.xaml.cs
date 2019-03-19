@@ -24,9 +24,19 @@ namespace Workout.Views
 
         void Handle_Clicked(object sender, EventArgs e)
         {
+            //todo timer
             info.IsVisible = !info.IsVisible;
             feedback.IsVisible = !feedback.IsVisible;
             timer.IsVisible = !timer.IsVisible;
+            if (feedback.IsVisible)
+            {
+                Title = "REPOS";
+            }
+            else
+            {
+                Title = "Exercice";
+                ViewModel.ChangeExerciceCommand.Execute(null);
+            }
         }
     }
 }

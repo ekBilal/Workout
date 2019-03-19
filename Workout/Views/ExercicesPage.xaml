@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage Title="Exercices" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.ExercicesPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddExerciceCommand}" />
+<!--        <ToolbarItem Text="Add" Command="{Binding AddExerciceCommand}" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView SelectedItem="{Binding SelectedExercice, Mode=TwoWay}" ItemsSource="{Binding Exercices}" ItemSelected="OnExerciceSelected">
