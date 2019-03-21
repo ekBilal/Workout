@@ -23,7 +23,10 @@ namespace Workout.ViewModels
         public ExerciceViewModel SelectedExercice
         {
             get { return _selectedExercice; }
-            set { SetValue(ref _selectedExercice, value); }
+            set 
+            { 
+                SetValue(ref _selectedExercice, value);
+            }
         }
 
         public ICommand SelectExerciceCommand { get; private set; }
@@ -39,7 +42,7 @@ namespace Workout.ViewModels
             SelectExerciceCommand = new Command<Exercice>(async e => await SelectExercice(e));
         }
 
-        protected async Task SelectExercice(Exercice exercice)
+        private async Task SelectExercice(Exercice exercice)
         {
             if (exercice == null) return;
             SelectedExercice = null;

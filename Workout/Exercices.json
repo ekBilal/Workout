@@ -274,8 +274,6 @@
       {
         "IdMuscle": 10,
         "Nom": "mollets",
-
-
         "Groupe": 1
       }
     ]
@@ -305,6 +303,34 @@
         "IdMuscle": 1,
         "Nom": "abdominaux",
         "Groupe": 2
+      }
+    ]
+  },
+  {
+    "Id": 18,
+    "Nom": "Mollets à la presse à cuisses",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+        "Groupe": 1
+      }
+    ]
+  },
+  {
+    "Id": 19,
+    "Nom": "Mollets au donkey",
+    "Description": null,
+    "Difficulte": 3,
+    "Types": [ 0 ],
+    "Cibles": [
+      {
+        "IdMuscle": 10,
+        "Nom": "mollets",
+        "Groupe": 1
       }
     ]
   }

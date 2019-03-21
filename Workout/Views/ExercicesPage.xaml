@@ -4,7 +4,10 @@
 <!--        <ToolbarItem Text="Add" Command="{Binding AddExerciceCommand}" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView SelectedItem="{Binding SelectedExercice, Mode=TwoWay}" ItemsSource="{Binding Exercices}" ItemSelected="OnExerciceSelected">
+        <ListView x:Name="exercices"
+                  SelectedItem="{Binding SelectedExercice, Mode=TwoWay}" 
+                  ItemsSource="{Binding Exercices}" 
+                  ItemSelected="OnExerciceSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Nom, StringFormat='{0}'}"/>

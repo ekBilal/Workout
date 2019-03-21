@@ -13,8 +13,8 @@ namespace Workout.Models
         public string Description { get; set; }
         public int Difficulte { get; set; }
 
-        public ICollection<Muscle> Cibles { get; set; }
-        public ICollection<Type> Types { get; set; }
+        public List<Muscle> Cibles { get; set; }
+        public Type Types { get; set; }
 
         public override string ToString()
         {

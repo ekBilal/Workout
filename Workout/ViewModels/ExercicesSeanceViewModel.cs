@@ -17,6 +17,17 @@ namespace Workout.ViewModels
             get { return _seance; }
             private set { SetValue(ref _seance, value); }
         }
+
+        private Exercice _selectedExercice;
+        public new Exercice SelectedExercice
+        {
+            get { return _selectedExercice; }
+            set
+            {
+                SetValue(ref _selectedExercice, value);
+            }
+        }
+
         public new ICommand SelectExerciceCommand { get; private set; }
 
         public ExercicesSeanceViewModel(ObservableCollection<Exercice> exercices, Seance seance):base(exercices)
@@ -25,7 +36,7 @@ namespace Workout.ViewModels
             SelectExerciceCommand = new Command<Exercice>(async e => await SelectExercice(e));
         }
 
-        public new async Task SelectExercice(Exercice exercice)
+        private async Task SelectExercice(Exercice exercice)
         {
             if (exercice == null) return;
             SelectedExercice = null;
@@ -35,7 +46,9 @@ namespace Workout.ViewModels
             Exercices.Remove(exercice);
         }
 
+#pragma warning disable CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
         public async Task Fin()
+#pragma warning restore CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
         {
             _pageService.ChangeMainPage(new MainPage());
         }

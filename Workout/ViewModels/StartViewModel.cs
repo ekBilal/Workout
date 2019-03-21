@@ -79,7 +79,7 @@ namespace Workout.ViewModels
                     break;
             }
 
-            var exercices = JsonStatam.getExercice().Where(ex => ex.Types.Contains(SelectedType));
+            var exercices = JsonStatam.getExercice().Where(ex => ex.Types == SelectedType);
             var muscles = JsonStatam.getMuscles().Where(m=> true);
             if (groupe != Groupe.non_def)
                 muscles = muscles.Where(m=>m.Groupe==groupe);
