@@ -1,4 +1,5 @@
-﻿using Workout.Views;
+﻿using Workout.Servives;
+using Workout.Views;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,7 +17,7 @@ namespace Workout
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            var service = Service.Instance;
         }
 
         protected override void OnSleep()

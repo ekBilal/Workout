@@ -8,7 +8,6 @@ namespace Workout.ViewModels
 {
     public class SeancesViewModel:BaseViewModel
     {
-        private Service _service;
         private readonly IPageService _pageService;
         private ObservableCollection<Seance> _seances = new ObservableCollection<Seance>();
 
@@ -22,7 +21,6 @@ namespace Workout.ViewModels
 
         public SeancesViewModel(IPageService pageService)
         {
-            _service = new Service();
             _pageService = pageService;
             InitMock();
         }
@@ -35,21 +33,5 @@ namespace Workout.ViewModels
             _seances.Add(seance);
         }
 
-        private void Init()
-        {
-            //var seance = new Seance();
-            //seance.Nom = "une seance";
-            //seance.Exercices = new ObservableCollection<Exercice>();
-            //var exercices = await _service.GetExercices();
-            ////Exercices = new ObservableCollection<ExerciceViewModel>();
-            //for (var i = 0; i < 5; i++)
-            //{
-            //    seance.Exercices.Add(exercices[i]);
-            //}
-
-            //Seances.Add(seance);
-            //Seances.Add(seance);
-
-        }
     }
 }

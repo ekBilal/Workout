@@ -25,10 +25,10 @@ namespace Workout.Views
             ViewModel.SelectExerciceCommand.Execute(e.SelectedItem);
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (ViewModel.Exercices.Count <= 0) Fin();
+            if (ViewModel.Exercices.Count <= 0) await Fin();
         }
 
         private async Task Fin()

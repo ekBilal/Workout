@@ -13,20 +13,6 @@ namespace Workout.Servives
     {
         private static Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
 
-
-        public static ObservableCollection<MuscleColor> getMusclesColor()
-        {
-            Stream stream = assembly.GetManifestResourceStream("Workout.muscles.json");
-
-            //Muscle[] muscles;
-            using (var reader = new StreamReader(stream))
-            {
-                var json = reader.ReadToEnd();
-                var muscles = JsonConvert.DeserializeObject<ObservableCollection<MuscleColor>>(json);
-                return new ObservableCollection<MuscleColor>(muscles.OrderBy(m => m.Nom));
-            }
-        }
-
         public static IEnumerable<Exercice> getListExercice()
         {
             Stream stream = assembly.GetManifestResourceStream("Workout.Exercices.json");
@@ -52,6 +38,33 @@ namespace Workout.Servives
             }
         }
 
+        public static ObservableCollection<Muscle> getAllMuscles()
+        {
+            Stream stream = assembly.GetManifestResourceStream("Workout.muscles.json");
+
+            //Muscle[] muscles;
+            using (var reader = new StreamReader(stream))
+            {
+                var json = reader.ReadToEnd();
+                var muscles = JsonConvert.DeserializeObject<ObservableCollection<Muscle>>(json);
+                return muscles;
+            }
+        }
+
+        public static ObservableCollection<Exercice> getAllExercices()
+        {
+            Stream stream = assembly.GetManifestResourceStream("Workout.Exercices.json");
+
+            //Muscle[] muscles;
+            using (var reader = new StreamReader(stream))
+            {
+                var json = reader.ReadToEnd();
+                var exercices = JsonConvert.DeserializeObject<ObservableCollection<Exercice>>(json);
+                return exercices;
+            }
+
+        }
+
         public static Stack<Exercice> getExercice()
         {
             Stream stream = assembly.GetManifestResourceStream("Workout.Exercices.json");
@@ -68,17 +81,7 @@ namespace Workout.Servives
 
         public static void Save(object o)
         {
-            string json = JsonConvert.SerializeObject(o, new JsonSerializerSettings()
-            {
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                Formatting = Formatting.Indented
-            }); ;
-        }
-
-        public static void Save(ObservableCollection<Muscle> muscles)
-        {
-            var json = JsonConvert.SerializeObject(muscles);
-            var muscle = JsonConvert.DeserializeObject<ObservableCollection<Muscle>>(json);
+            string json = JsonConvert.SerializeObject(o);
         }
     }
 }

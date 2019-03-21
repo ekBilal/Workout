@@ -13,6 +13,7 @@ namespace Workout.ViewModels
     public class StartViewMode:BaseViewModel
     {
         private readonly IPageService _pageService;
+        private readonly Service service;
 
         private ObservableCollection<Exercice.Type> _type;
         public ObservableCollection<Exercice.Type> Type
@@ -57,8 +58,9 @@ namespace Workout.ViewModels
         public StartViewMode(IPageService pageService)
         {
             _pageService = pageService;
+            service = Service.Instance;
             var type = Enum.GetValues(typeof(Exercice.Type));
-            var muscle = JsonStatam.getMuscles();
+            var muscle = service.AllMuscles();
             _type = new ObservableCollection<Exercice.Type>((IEnumerable<Exercice.Type>)type);
             StartCommand = new Command(Start);
         }
@@ -79,8 +81,9 @@ namespace Workout.ViewModels
                     break;
             }
 
-            var exercices = JsonStatam.getExercice().Where(ex => ex.Types == SelectedType);
-            var muscles = JsonStatam.getMuscles().Where(m=> true);
+            var exercices = service.AllExercices().Where(ex => ex.Types == SelectedType);
+
+            var muscles = service.AllMuscles().Where(m=> true);
             if (groupe != Groupe.non_def)
                 muscles = muscles.Where(m=>m.Groupe==groupe);
 
@@ -156,7 +159,6 @@ namespace Workout.ViewModels
                     seance.Series.Add(new Serie { Exercice = exercice, NbReps = nbRep, Repos=repos });
             }
 
-            JsonStatam.Save(seance);
             _pageService.ChangeMainPage(new ExercicesPage(new ExercicesSeanceViewModel(mesExercices,seance)));
             mesExercices = new ObservableCollection<Exercice>();
         }

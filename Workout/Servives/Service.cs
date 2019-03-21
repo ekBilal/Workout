@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
+
 using Workout.Models;
 
 namespace Workout.Servives
@@ -11,49 +12,93 @@ namespace Workout.Servives
     public class Service
     {
 
-        private SQLiteAsyncConnection _connection;
+        private static Service instance = null;
+        public static Service Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Service();
+                }
+                return instance;
+            }
+        }
 
-        public Service()
+        private SQLiteConnection db;
+
+        private Service()
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var path = Path.Combine(documentsPath, "MyData.db");
-            _connection = new SQLiteAsyncConnection(path);
+            var path = Path.Combine(documentsPath, "Workout.db");
 
-            //_connection = SQLiteDb.Instance.Connection;
-            Init();
+            db = new SQLiteConnection(path);
+
+            db.CreateTable<Exercice>();
+            db.CreateTable<Muscle>();
+            db.CreateTable<ExerciceMuscle>();
+
+            var allMuscles = db.GetAllWithChildren<Muscle>();
+            if (allMuscles.Count <= 0) 
+                PeuplerMuscle();
+
+            var allExercices = db.GetAllWithChildren<Exercice>();
+            if (allExercices.Count <= 0) 
+                PeuplerExercice();
+
         }
 
-        private async void Init()
+        private void PeuplerMuscle()
         {
-            await _connection.CreateTableAsync<Exercice>();
-
-            //var exercices = JsonStatam.getListExercice();
-            //await _connection.InsertAllAsync(exercices);
+            var muscles = JsonStatam.getAllMuscles();
+            foreach(Muscle muscle in muscles)
+            {
+                var m = AddMuscle(muscle);
+            }
         }
 
-
-        public async Task<List<Exercice>> GetExercices()
+        private void PeuplerExercice()
         {
-            var exercices = await _connection.Table<Exercice>().ToListAsync();
-            return exercices;
+            var exercices = JsonStatam.getAllExercices();
+            foreach(Exercice exercice in exercices)
+            {
+                db.Insert(exercice);
+                var e = db.GetWithChildren<Exercice>(exercice.Id,true);
+                e.Cibles = exercice.Cibles;
+                db.UpdateWithChildren(exercice);
+
+            }
         }
 
-        public async Task<Exercice> AddExercice(Exercice exercice)
+        public Exercice AddExercice(Exercice exercice)
         {
-            await _connection.InsertAsync(exercice);
+            db.Insert(exercice);
             return exercice;
         }
 
-        public async Task<Exercice> UpdateExercice(Exercice exercice)
+        public Exercice UpdateExercice(Exercice exercice)
         {
-            exercice.Nom += " MAJ";
-            await _connection.UpdateAsync(exercice);
+            db.UpdateWithChildren(exercice);
             return exercice;
         }
 
-        public async Task<int> DeleteExercice(Exercice exercice)
+        public Muscle AddMuscle(Muscle muscle)
         {
-            return await _connection.DeleteAsync(exercice);
+            db.Insert(muscle);
+            return muscle;
         }
+
+        public ObservableCollection<Muscle> AllMuscles()
+        {
+            var muscles = db.GetAllWithChildren<Muscle>();
+            return new ObservableCollection<Muscle>(muscles.OrderBy(m => m.Nom));
+        }
+
+        public ObservableCollection<Exercice> AllExercices()
+        {
+            var exercices = db.GetAllWithChildren<Exercice>();
+            return new ObservableCollection<Exercice>(exercices.OrderBy(m => m.Nom));
+        }
+
     }
 }

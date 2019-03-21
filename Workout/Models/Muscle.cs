@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
+
 
 namespace Workout.Models
 {
     public class Muscle
     {
-        public int IdMuscle{get; set;}
+        [PrimaryKey, AutoIncrement]
+        public int Id{get; set;}
+
+        [Unique]
         public string Nom { get; set;}
+
         public Groupe Groupe { get; set;}
+
+        [ManyToMany(typeof(ExerciceMuscle))]
+        public List<Exercice> exercices { get; set; }
 
         public override string ToString()
         {
@@ -19,7 +29,7 @@ namespace Workout.Models
             try
             {
                 var muscle = (Muscle)obj;
-                if (IdMuscle != muscle.IdMuscle) return false;
+                if (Id != muscle.Id) return false;
                 if (Nom != muscle.Nom) return false;
 
             }
@@ -34,7 +44,7 @@ namespace Workout.Models
         public override int GetHashCode()
         {
             var hashCode = 543565279;
-            hashCode = hashCode * -1521134295 + IdMuscle.GetHashCode();
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Nom);
             hashCode = hashCode * -1521134295 + Groupe.GetHashCode();
             return hashCode;

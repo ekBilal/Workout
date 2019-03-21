@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace Workout.Models
 {
@@ -8,12 +9,17 @@ namespace Workout.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         [Unique, MaxLength(255)]
         public string Nom { get; set; }
+
         public string Description { get; set; }
+
         public int Difficulte { get; set; }
 
+        [ManyToMany(typeof(ExerciceMuscle))]
         public List<Muscle> Cibles { get; set; }
+
         public Type Types { get; set; }
 
         public override string ToString()
