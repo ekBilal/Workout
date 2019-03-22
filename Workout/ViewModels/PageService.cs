@@ -53,7 +53,7 @@ namespace Workout.ViewModels
 
         public void ChangeMainPage(Page page)
         {
-            Application.Current.MainPage = new NavigationPage(page);
+            Application.Current.MainPage = page;
         }
 
         public async Task PopToRootAsync()

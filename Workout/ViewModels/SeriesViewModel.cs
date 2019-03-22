@@ -76,7 +76,7 @@ namespace Workout.ViewModels
         {
             if (Series.Count <= 1)
             {
-                await PageService.Instance.PopAsync();
+                await PageService.Instance.PopModalAsync();
                 return;
             }
             SavePerf();

@@ -42,7 +42,7 @@ namespace Workout.ViewModels
             SelectedExercice = null;
             var series = Seance.Series.Where(e => e.Exercice == exercice);
             var ls = series.ToList();
-            await PageService.Instance.PushAsync(new SeriePage(new SeriesViewModel(ls)));
+            await PageService.Instance.PushModalAsync(new SeriePage(new SeriesViewModel(ls)));
             Exercices.Remove(exercice);
         }
 

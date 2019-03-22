@@ -32,12 +32,10 @@
     <EmbeddedResource Remove="Views\Entrainement.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="FichierConf.txt" />
     <None Remove="Exercices.json" />
     <None Remove="muscles.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FichierConf.txt" />
     <EmbeddedResource Include="Exercices.json" />
     <EmbeddedResource Include="Muscles.json" />
   </ItemGroup>

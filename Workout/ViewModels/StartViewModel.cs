@@ -84,7 +84,7 @@ namespace Workout.ViewModels
 
         private void GetExercice(Muscle muscle)
         {
-            var exercices = muscle.Exercices.Where(ex => ex.Types == SelectedType).ToArray();
+            var exercices = Service.Instance.getAllExercices().Where(e => e.Cible.Id == muscle.Id).ToArray();
             if (!exercices.Any()) 
                 return;
 

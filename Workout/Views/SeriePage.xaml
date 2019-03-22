@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Workout.Views.SeriePage" Title="Exercice">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Workout.Views.SeriePage" 
+    Title="Exercice">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="0,20,0,0">
             <Frame x:Name="info" BackgroundColor="White" Margin="5" HasShadow="true" CornerRadius="3" IsVisible="true">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -12,7 +23,6 @@
                     <Label Text="{Binding Cible}" />
                     <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Text="Difficulté" FontSize="Small" />
-                        
                         <Label Text="***" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
@@ -22,15 +32,15 @@
                     <Label Text="Nombre de répétition validé" />
                     <Entry Keyboard="Numeric" Text="{Binding Reps, Mode=TwoWay}" />
                     <Label Text="Charge" />
-                    <Entry Keyboard="Numeric" Text="{Binding Charge, Mode=TwoWay}"/>
-                    <Label Text="Difficulté"/>
-                    <Slider Maximum="5"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Charge, Mode=TwoWay}" />
+                    <Label Text="Difficulté" />
+                    <Slider Maximum="5" />
                 </StackLayout>
             </Frame>
             <Frame x:Name="timer" BackgroundColor="#333" Margin="5" HasShadow="true" CornerRadius="3" VerticalOptions="CenterAndExpand" IsVisible="false">
                 <Label Text="{Binding Serie.Repos}" TextColor="White" HorizontalTextAlignment="Center" FontSize="Large" />
             </Frame>
-            <Button  x:Name="button" IsVisible="true" Text="repos" BackgroundColor="#777" Margin="10" TextColor="White" VerticalOptions="EndAndExpand" Clicked="Handle_Clicked"/>
+            <Button x:Name="button" IsVisible="true" Text="repos" BackgroundColor="#777" Margin="10" TextColor="White" VerticalOptions="EndAndExpand" Clicked="Handle_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
