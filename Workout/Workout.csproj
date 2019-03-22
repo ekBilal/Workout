@@ -19,6 +19,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
     <Folder Include="Servives\" />
+    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Menu.xaml.cs" />
@@ -38,6 +39,20 @@
   <ItemGroup>
     <EmbeddedResource Include="FichierConf.txt" />
     <EmbeddedResource Include="Exercices.json" />
-    <EmbeddedResource Include="muscles.json" />
+    <EmbeddedResource Include="Muscles.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\Menu\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Menu\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

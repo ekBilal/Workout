@@ -25,85 +25,61 @@ namespace Workout.Servives
             }
         }
 
-        private SQLiteConnection db;
+        private SQLiteConnection _db;
 
-        private Service()
+        public Service()
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var path = Path.Combine(documentsPath, "Workout.db");
+            _db = new SQLiteConnection(path);
+            //_db.DropTable<Exercice>();
+            //_db.DropTable<Muscle>();
+            //_db.DropTable<ExerciceMuscle>();
+            //_db.DropTable<Historique>();
+            _db.CreateTable<Exercice>();
+            _db.CreateTable<Muscle>();
+            _db.CreateTable<ExerciceMuscle>();
+            _db.CreateTable<Historique>();
 
-            db = new SQLiteConnection(path);
+            if (!getAllMuscles().Any())
+                PeuplerMuscles();
 
-            db.DropTable<Exercice>();
-            db.DropTable<Muscle>();
-            db.DropTable<ExerciceMuscle>();
-            db.DropTable<Historique>();
-
-            db.CreateTable<Exercice>();
-            db.CreateTable<Muscle>();
-            db.CreateTable<ExerciceMuscle>();
-            db.CreateTable<Historique>();
-
-            var allMuscles = db.GetAllWithChildren<Muscle>();
-            if (allMuscles.Count <= 0) 
-                PeuplerMuscle();
-
-            var allExercices = db.GetAllWithChildren<Exercice>();
-            if (allExercices.Count <= 0) 
-                PeuplerExercice();
-
+            if (!getAllExercices().Any())
+                PeuplerExercices();
         }
 
-        private void PeuplerMuscle()
+        public ObservableCollection<Muscle> getAllMuscles()
+        {
+            var muscles = _db.GetAllWithChildren<Muscle>().OrderBy(m => m.Nom);
+            return new ObservableCollection<Muscle>(muscles);
+        }
+
+        public ObservableCollection<Exercice> getAllExercices()
+        {
+            var exercices = _db.GetAllWithChildren<Exercice>().OrderBy(e => e.Nom);
+            return new ObservableCollection<Exercice>(exercices);
+        }
+
+        public void Update(object o)
+        {
+            _db.UpdateWithChildren(o);
+        }
+
+        public void Insert(object o)
+        {
+            _db.InsertWithChildren(o);
+        }
+
+        public void PeuplerMuscles()
         {
             var muscles = JsonStatam.getAllMuscles();
-            foreach(Muscle muscle in muscles)
-            {
-                var m = AddMuscle(muscle);
-            }
+            _db.InsertAllWithChildren(muscles);
         }
 
-        private void PeuplerExercice()
+        public void PeuplerExercices()
         {
             var exercices = JsonStatam.getAllExercices();
-            db.InsertAllWithChildren(exercices);
+            _db.InsertAllWithChildren(exercices);
         }
-
-        public Exercice AddExercice(Exercice exercice)
-        {
-            db.Insert(exercice);
-            return exercice;
-        }
-
-        public Exercice UpdateExercice(Exercice exercice)
-        {
-            db.UpdateWithChildren(exercice);
-            return exercice;
-        }
-
-        public Historique SaveHistorique(Historique historique)
-        {
-            db.InsertWithChildren(historique);
-            return historique;
-        }
-
-        public Muscle AddMuscle(Muscle muscle)
-        {
-            db.Insert(muscle);
-            return muscle;
-        }
-
-        public ObservableCollection<Muscle> AllMuscles()
-        {
-            var muscles = db.GetAllWithChildren<Muscle>();
-            return new ObservableCollection<Muscle>(muscles.OrderBy(m => m.Nom));
-        }
-
-        public ObservableCollection<Exercice> AllExercices()
-        {
-            var exercices = db.GetAllWithChildren<Exercice>();
-            return new ObservableCollection<Exercice>(exercices.OrderBy(m => m.Nom));
-        }
-
     }
 }

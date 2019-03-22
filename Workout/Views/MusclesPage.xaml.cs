@@ -13,7 +13,7 @@ namespace Workout.Views
 
         public MusclesPage()
         {
-            ViewModel = new MusclesViewModel(new PageService());
+            ViewModel = new MusclesViewModel();
             InitializeComponent();
         }
 

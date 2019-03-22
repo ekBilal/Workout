@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:views="clr-namespace:Workout.Views" 
-             x:Class="Workout.Views.MainPage">
+             x:Class="Workout.Views.StartPage">
     <ContentPage.Content>
         <StackLayout>
 

@@ -42,7 +42,7 @@ namespace Workout.ViewModels
             SelectedExercice = null;
             var series = Seance.Series.Where(e => e.Exercice == exercice);
             var ls = series.ToList();
-            await _pageService.PushAsync(new SeriePage(new SeriesViewModel(ls, _pageService)));
+            await PageService.Instance.PushAsync(new SeriePage(new SeriesViewModel(ls)));
             Exercices.Remove(exercice);
         }
 
@@ -50,7 +50,7 @@ namespace Workout.ViewModels
         public async Task Fin()
 #pragma warning restore CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
         {
-            _pageService.ChangeMainPage(new MainPage());
+            PageService.Instance.ChangeMainPage(new MainPage());
         }
     }
 }

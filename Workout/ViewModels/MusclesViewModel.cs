@@ -12,8 +12,6 @@ namespace Workout.ViewModels
 {
     public class MusclesViewModel : BaseViewModel
     {
-        private readonly IPageService _pageService;
-        public Muscle _selectedMuscle;
         private ObservableCollection<Muscle> _muscles = new ObservableCollection<Muscle>();
 
         public ObservableCollection<Muscle> Muscles
@@ -22,6 +20,7 @@ namespace Workout.ViewModels
             private set { SetValue(ref _muscles, value); }
         }
 
+        public Muscle _selectedMuscle;
         public Muscle SelectedMuscle
         {
             get { return _selectedMuscle; }
@@ -30,10 +29,9 @@ namespace Workout.ViewModels
 
         public ICommand SelectMuscleCommand { get; private set; }
 
-        public MusclesViewModel(IPageService pageService)
+        public MusclesViewModel()
         {
-            _pageService = pageService;
-            Muscles = JsonStatam.getMuscles();
+            Muscles = JsonStatam.getAllMuscles();
             SelectMuscleCommand = new Command<Muscle>(async m => await DetailMuscle(m));
         }
 
@@ -42,7 +40,7 @@ namespace Workout.ViewModels
         {
             if (muscle == null) return;
             SelectedMuscle = null;
-            await _pageService.DisplayAlert(muscle.Nom, muscle.Groupe.ToString(), "Ok");
+            await PageService.Instance.DisplayAlert(muscle.Nom, muscle.Groupe.ToString(), "Ok");
         }
     }
 }

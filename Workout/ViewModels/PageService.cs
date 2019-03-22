@@ -6,6 +6,21 @@ namespace Workout.ViewModels
 {
     public class PageService : IPageService
     {
+        private static PageService _instance;
+        public static PageService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PageService();
+                }
+                return _instance;
+            }
+        }
+
+        private PageService() { }
+
         public async Task<bool> DisplayAlert(string title, string message, string ok, string cancel)
         {
             return await Application.Current.MainPage.DisplayAlert(title, message, ok, cancel);

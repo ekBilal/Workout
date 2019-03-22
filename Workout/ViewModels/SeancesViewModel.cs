@@ -8,9 +8,7 @@ namespace Workout.ViewModels
 {
     public class SeancesViewModel:BaseViewModel
     {
-        private readonly IPageService _pageService;
         private ObservableCollection<Seance> _seances = new ObservableCollection<Seance>();
-
         public ObservableCollection<Seance> Seances
         {
             get { return _seances; }
@@ -18,12 +16,6 @@ namespace Workout.ViewModels
         }
 
         public ICommand SelectedSeanceCommand { get; private set; }
-
-        public SeancesViewModel(IPageService pageService)
-        {
-            _pageService = pageService;
-        }
-
 
     }
 }

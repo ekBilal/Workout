@@ -8,17 +8,14 @@ namespace Workout.ViewModels
     public class EntrainementsViewModel : BaseViewModel
     {
 
-        private Entrainement _selectedEntrainement;
-        private readonly IPageService _pageService;
         private ObservableCollection<Entrainement> _entrainements = new ObservableCollection<Entrainement>();
-
-
         public ObservableCollection<Entrainement> Entrainements
         {
             get { return _entrainements; }
             private set { SetValue(ref _entrainements, value); }
         }
 
+        private Entrainement _selectedEntrainement;
         public Entrainement SelectedEntrainement
         {
             get { return _selectedEntrainement; }
@@ -27,9 +24,8 @@ namespace Workout.ViewModels
 
         public ICommand SelectedEntrainementCommand { get; private set; }
 
-        public EntrainementsViewModel(IPageService pageService)
+        public EntrainementsViewModel()
         {
-            _pageService = pageService;
             SelectedEntrainementCommand = new Command<Entrainement>(e => SelectedEntrainament(e));
             Init();
         }
@@ -43,12 +39,12 @@ namespace Workout.ViewModels
             }
         }
 
-        private void SelectedEntrainament(Entrainement entrainement)
+        private async void SelectedEntrainament(Entrainement entrainement)
         {
             if (_selectedEntrainement == null) return;
             _selectedEntrainement = null;
             //Todo chager entraiment.Nom par entainement.ToString();
-            _pageService.DisplayAlert("yolo", entrainement.Nom,"ok");
+            await PageService.Instance.DisplayAlert("yolo", entrainement.Nom, "ok");
         }
     }
 }

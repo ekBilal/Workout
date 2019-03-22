@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Workout.Views
 {
-    public partial class ExercicesPage : ContentPage
+    public partial class ExercicesSeancePage : ContentPage
     {
         public ExercicesSeanceViewModel ViewModel
         {
@@ -14,7 +14,7 @@ namespace Workout.Views
             set { BindingContext = value; }
         }
 
-        public ExercicesPage(ExercicesSeanceViewModel vm)
+        public ExercicesSeancePage(ExercicesSeanceViewModel vm)
         {
             ViewModel =vm;
             InitializeComponent();
@@ -35,7 +35,6 @@ namespace Workout.Views
         {
             await DisplayAlert("Bien joué", "votre entrainement est fini", "ok");
             await ViewModel.Fin();
-
         }
     }
 }

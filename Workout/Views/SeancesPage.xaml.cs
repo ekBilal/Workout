@@ -6,7 +6,6 @@ namespace Workout.Views
 {
     public partial class SeancesPage : ContentPage
     {
-        private PageService _pageService;
         public SeancesViewModel ViewModel
         {
             get { return BindingContext as SeancesViewModel; }
@@ -15,8 +14,7 @@ namespace Workout.Views
 
         public SeancesPage()
         {
-            _pageService = new PageService();
-            ViewModel = new SeancesViewModel(_pageService);
+            ViewModel = new SeancesViewModel();
             InitializeComponent();
         }
     }

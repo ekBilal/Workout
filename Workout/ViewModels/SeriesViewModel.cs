@@ -10,9 +10,6 @@ namespace Workout.ViewModels
 {
     public class SeriesViewModel : BaseViewModel
     {
-        private readonly IPageService _pageService;
-        private readonly Service _service;
-
         private ObservableCollection<Serie> _series;
         public ObservableCollection<Serie> Series
         {
@@ -56,19 +53,15 @@ namespace Workout.ViewModels
             set { SetValue(ref _reps, value); }
         }
 
-
-
         public ICommand ChangeExerciceCommand { get; private set; }
         public ICommand SavePerfCommand { get; private set; }
 
-        public SeriesViewModel(IList<Serie> series, IPageService pageService)
+        public SeriesViewModel(IList<Serie> series)
         {
             Series = new ObservableCollection<Serie>(series);
             Serie = Series[0];
             ChangeExerciceCommand = new Command(ChangeExercice);
             SavePerfCommand = new Command(SavePerf);
-            _pageService = pageService;
-            _service = Service.Instance;
 
         }
 
@@ -76,14 +69,14 @@ namespace Workout.ViewModels
         {
             var historique = new Historique { Date = DateTime.Today, Charge=Charge, Exercice=Serie.Exercice, Reps=Reps};
             Reps = Charge = 0;
-            _service.SaveHistorique(historique);
+            Service.Instance.Insert(historique);
         }
 
-        private void ChangeExercice()
+        private async void ChangeExercice()
         {
             if (Series.Count <= 1)
             {
-                _pageService.PopAsync();
+                await PageService.Instance.PopAsync();
                 return;
             }
             SavePerf();
