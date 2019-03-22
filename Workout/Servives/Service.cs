@@ -32,10 +32,10 @@ namespace Workout.Servives
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var path = Path.Combine(documentsPath, "Workout.db");
             _db = new SQLiteConnection(path);
-            //_db.DropTable<Exercice>();
-            //_db.DropTable<Muscle>();
-            //_db.DropTable<ExerciceMuscle>();
-            //_db.DropTable<Historique>();
+            _db.DropTable<Exercice>();
+            _db.DropTable<Muscle>();
+            _db.DropTable<ExerciceMuscle>();
+            _db.DropTable<Historique>();
             _db.CreateTable<Exercice>();
             _db.CreateTable<Muscle>();
             _db.CreateTable<ExerciceMuscle>();

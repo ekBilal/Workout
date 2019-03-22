@@ -11,6 +11,7 @@
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MasterPageItem}">
                     <local:MasterPageItem Title="Entrainement" TargetType="{x:Type local:StartPage}" />
+                    <local:MasterPageItem Title="Exercices" TargetType="{x:Type local:ExercicesPage}" />
                     <local:MasterPageItem Title="Muscles" TargetType="{x:Type local:MusclesPage}" />
                 </x:Array>
             </ListView.ItemsSource>
