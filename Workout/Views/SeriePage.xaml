@@ -20,9 +20,9 @@
             <Frame x:Name="feedback" BackgroundColor="White" Margin="5" HasShadow="true" CornerRadius="3" IsVisible="false">
                 <StackLayout>
                     <Label Text="Nombre de répétition validé" />
-                    <Entry Keyboard="Numeric"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Reps, Mode=TwoWay}" />
                     <Label Text="Charge" />
-                    <Entry Keyboard="Numeric"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Charge, Mode=TwoWay}"/>
                     <Label Text="Difficulté"/>
                     <Slider Maximum="5"/>
                 </StackLayout>

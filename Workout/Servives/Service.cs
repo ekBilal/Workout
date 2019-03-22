@@ -34,9 +34,15 @@ namespace Workout.Servives
 
             db = new SQLiteConnection(path);
 
+            db.DropTable<Exercice>();
+            db.DropTable<Muscle>();
+            db.DropTable<ExerciceMuscle>();
+            db.DropTable<Historique>();
+
             db.CreateTable<Exercice>();
             db.CreateTable<Muscle>();
             db.CreateTable<ExerciceMuscle>();
+            db.CreateTable<Historique>();
 
             var allMuscles = db.GetAllWithChildren<Muscle>();
             if (allMuscles.Count <= 0) 
@@ -60,14 +66,7 @@ namespace Workout.Servives
         private void PeuplerExercice()
         {
             var exercices = JsonStatam.getAllExercices();
-            foreach(Exercice exercice in exercices)
-            {
-                db.Insert(exercice);
-                var e = db.GetWithChildren<Exercice>(exercice.Id,true);
-                e.Cibles = exercice.Cibles;
-                db.UpdateWithChildren(exercice);
-
-            }
+            db.InsertAllWithChildren(exercices);
         }
 
         public Exercice AddExercice(Exercice exercice)
@@ -80,6 +79,12 @@ namespace Workout.Servives
         {
             db.UpdateWithChildren(exercice);
             return exercice;
+        }
+
+        public Historique SaveHistorique(Historique historique)
+        {
+            db.InsertWithChildren(historique);
+            return historique;
         }
 
         public Muscle AddMuscle(Muscle muscle)

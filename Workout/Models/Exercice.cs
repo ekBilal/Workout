@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
@@ -17,20 +16,25 @@ namespace Workout.Models
 
         public int Difficulte { get; set; }
 
+        [ManyToOne]
+        public Muscle Cible { get; set; }
+
+        [ForeignKey(typeof(Muscle))]
+        public int MuscleId { get; set; }
+
         [ManyToMany(typeof(ExerciceMuscle))]
-        public List<Muscle> Cibles { get; set; }
+        public ObservableCollection<Muscle> Cibles { get; set; }
 
         public Type Types { get; set; }
 
-        public override string ToString()
-        {
-            return Nom;
-        }
+        [OneToMany]
+        public ObservableCollection<Historique> Historiques { get; set; }
 
-        public enum Type
-        {
-            musculation, poids_du_corps, stretching
-            //haut, bas, push, pull
-        }
+    }
+
+
+    public enum Type
+    {
+        musculation, poids_de_corps, stretching
     }
 }

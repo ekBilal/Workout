@@ -15,22 +15,15 @@ namespace Workout.ViewModels
         private readonly IPageService _pageService;
         private readonly Service service;
 
-        private ObservableCollection<Exercice.Type> _type;
-        public ObservableCollection<Exercice.Type> Type
+        private ObservableCollection<Models.Type> _type;
+        public ObservableCollection<Models.Type> Type
         {
             get { return _type; }
             private set { SetValue(ref _type, value); }
         }
 
-        private ObservableCollection<Muscle> _muscle;
-        public ObservableCollection<Muscle> Muscle
-        {
-            get { return _muscle; }
-            private set { SetValue(ref _muscle, value); }
-        }
-
-        private Exercice.Type _selectedType;
-        public Exercice.Type SelectedType
+        private Models.Type _selectedType;
+        public Models.Type SelectedType
         {
             get { return _selectedType; }
             set { SetValue(ref _selectedType, value); }
@@ -59,9 +52,9 @@ namespace Workout.ViewModels
         {
             _pageService = pageService;
             service = Service.Instance;
-            var type = Enum.GetValues(typeof(Exercice.Type));
+            var type = Enum.GetValues(typeof(Models.Type));
             var muscle = service.AllMuscles();
-            _type = new ObservableCollection<Exercice.Type>((IEnumerable<Exercice.Type>)type);
+            _type = new ObservableCollection<Models.Type>((IEnumerable<Models.Type>)type);
             StartCommand = new Command(Start);
         }
 
@@ -80,26 +73,27 @@ namespace Workout.ViewModels
                     groupe = Groupe.non_def;
                     break;
             }
+            
+            IEnumerable<Muscle> muscles = service.AllMuscles();
 
-            var exercices = service.AllExercices().Where(ex => ex.Types == SelectedType);
-
-            var muscles = service.AllMuscles().Where(m=> true);
             if (groupe != Groupe.non_def)
-                muscles = muscles.Where(m=>m.Groupe==groupe);
+                muscles = muscles.Where(m => m.Groupe == groupe);
 
             foreach (Muscle muscle in muscles)
             {
-                GetExercice(muscle, exercices);
+                GetExercice(muscle);
             }
 
             CreerUneSeance();
 
         }
 
-        private void GetExercice(Muscle muscle, IEnumerable<Exercice> e)
+        private void GetExercice(Muscle muscle)
         {
-            var exercices = e.Where(ex => ex.Cibles.Contains(muscle)).ToArray();
-            if (exercices.Count() <= 0) return;
+            var exercices = muscle.Exercices.Where(ex => ex.Types == SelectedType).ToArray();
+            if (!exercices.Any()) 
+                return;
+
             var rnd = new Random(DateTime.Now.Millisecond);
 
             int ticks = rnd.Next(exercices.Count());
@@ -153,6 +147,7 @@ namespace Workout.ViewModels
                     break;
             }
 
+            mesExercices = new ObservableCollection<Exercice>(mesExercices.OrderBy(e => e.Nom));
             foreach(Exercice exercice in mesExercices)
             {
                 for(int i = 0; i<3; i++)

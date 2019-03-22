@@ -22,16 +22,8 @@ namespace Workout.ViewModels
         public SeancesViewModel(IPageService pageService)
         {
             _pageService = pageService;
-            InitMock();
         }
 
-        private void InitMock()
-        {
-            var seance = new Seance { Series = new ObservableCollection<Serie>(), Nom="FullBody" };
-            var serie = new Serie { NbReps = 10, Exercice = new Exercice { Nom = "Exercice 1" } };
-            seance.Series.Add(serie);
-            _seances.Add(seance);
-        }
 
     }
 }

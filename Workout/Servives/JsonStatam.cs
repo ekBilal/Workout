@@ -42,7 +42,6 @@ namespace Workout.Servives
         {
             Stream stream = assembly.GetManifestResourceStream("Workout.muscles.json");
 
-            //Muscle[] muscles;
             using (var reader = new StreamReader(stream))
             {
                 var json = reader.ReadToEnd();
@@ -55,7 +54,6 @@ namespace Workout.Servives
         {
             Stream stream = assembly.GetManifestResourceStream("Workout.Exercices.json");
 
-            //Muscle[] muscles;
             using (var reader = new StreamReader(stream))
             {
                 var json = reader.ReadToEnd();

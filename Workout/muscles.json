@@ -28,6 +28,14 @@
     "Groupe": 2,
     "exercices": [
       {
+        "Id": 1,
+        "Nom": "Développé couché barre",
+        "Description": null,
+        "Difficulte": 3,
+        "Cibles": null,
+        "Types": 0
+      },
+      {
         "Id": 2,
         "Nom": "Développé couché haltères",
         "Description": null,

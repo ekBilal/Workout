@@ -31,6 +31,7 @@ namespace Workout.Views
             if (feedback.IsVisible)
             {
                 Title = "REPOS";
+                //ViewModel.SavePerfCommand.Execute(null);
             }
             else
             {

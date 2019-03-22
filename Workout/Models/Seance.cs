@@ -7,8 +7,10 @@ namespace Workout.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         [Unique, MaxLength(255)]
         public string Nom { get; set; }
+
         public ObservableCollection<Serie> Series { get; set; }
 
         public override string ToString()
